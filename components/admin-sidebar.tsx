@@ -13,6 +13,7 @@ import {
   Settings,
   LogOut,
   Shield,
+  Briefcase,
 } from "lucide-react"
 
 const sidebarItems = [
@@ -39,7 +40,7 @@ const sidebarItems = [
   {
     title: "Jobs",
     href: "/admin/jobs",
-    icon: AlertTriangle,
+    icon: Briefcase,
   },
   {
     title: "Disputes",
@@ -60,6 +61,12 @@ const sidebarItems = [
 
 export default function AdminSidebar() {
   const pathname = usePathname()
+
+  const handleLogout = () => {
+    console.log("[v0] Admin logout clicked")
+    // In a real app, this would handle logout logic
+    alert("Logout functionality will be implemented with authentication system")
+  }
 
   return (
     <div className="flex h-screen w-64 flex-col bg-sidebar border-r border-sidebar-border shadow-lg">
@@ -103,7 +110,10 @@ export default function AdminSidebar() {
       </nav>
 
       <div className="px-4 py-4 border-t border-sidebar-border bg-muted/30">
-        <button className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-sm font-medium text-sidebar-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-200 group">
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-sm font-medium text-sidebar-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-200 group"
+        >
           <LogOut className="w-5 h-5 group-hover:scale-105 transition-transform duration-200" />
           Logout
         </button>

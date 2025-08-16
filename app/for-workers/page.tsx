@@ -182,30 +182,30 @@ export default function ForWorkersPage() {
                 <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-green-600">$45-85</div>
+                      <div className="text-2xl font-bold text-green-600">₹3,600-6,800</div>
                       <div className="text-sm text-gray-600">Per Hour Average</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">$3K-8K</div>
+                      <div className="text-2xl font-bold text-blue-600">₹2.4L-6.4L</div>
                       <div className="text-sm text-gray-600">Monthly Potential</div>
                     </div>
                   </div>
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
                       <span>Plumbing</span>
-                      <span className="font-semibold">$55-95/hr</span>
+                      <span className="font-semibold">₹4,400-7,600/hr</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Electrical</span>
-                      <span className="font-semibold">$60-100/hr</span>
+                      <span className="font-semibold">₹4,800-8,000/hr</span>
                     </div>
                     <div className="flex justify-between">
                       <span>General Handyman</span>
-                      <span className="font-semibold">$40-70/hr</span>
+                      <span className="font-semibold">₹3,200-5,600/hr</span>
                     </div>
                     <div className="flex justify-between">
                       <span>HVAC</span>
-                      <span className="font-semibold">$65-110/hr</span>
+                      <span className="font-semibold">₹5,200-8,800/hr</span>
                     </div>
                   </div>
                 </div>

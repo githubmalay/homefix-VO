@@ -1,14 +1,23 @@
+"use client"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Wrench, DollarSign, AlertTriangle, TrendingUp, Clock } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Users, Wrench, IndianRupee, AlertTriangle, TrendingUp, Clock } from "lucide-react"
+import Link from "next/link"
 
 export default function AdminDashboard() {
   const stats = {
     totalCustomers: 1247,
     activeHandymen: 89,
-    monthlyRevenue: 45230,
+    monthlyRevenue: 3623440, // converted to Indian rupees (45230 * 80)
     pendingVerifications: 12,
     activeJobs: 34,
     completedJobs: 892,
+  }
+
+  const handleQuickAction = (action: string) => {
+    console.log(`[v0] Quick action clicked: ${action}`)
+    alert(`${action} functionality will navigate to the appropriate admin section`)
   }
 
   return (
@@ -48,12 +57,12 @@ export default function AdminDashboard() {
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-lg flex items-center">
-              <DollarSign className="w-5 h-5 text-green-500 mr-2" />
+              <IndianRupee className="w-5 h-5 text-green-500 mr-2" />
               Monthly Revenue
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">${stats.monthlyRevenue.toLocaleString()}</div>
+            <div className="text-2xl font-bold text-blue-600">₹{stats.monthlyRevenue.toLocaleString()}</div>
             <p className="text-sm text-gray-600">+18% from last month</p>
           </CardContent>
         </Card>
@@ -99,37 +108,67 @@ export default function AdminDashboard() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="cursor-pointer hover:shadow-md transition-shadow">
-          <CardContent className="p-6 text-center">
-            <AlertTriangle className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
-            <h3 className="font-semibold mb-1">Pending Verifications</h3>
-            <p className="text-sm text-gray-600">{stats.pendingVerifications} waiting</p>
-          </CardContent>
-        </Card>
+        <Link href="/admin/verifications">
+          <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <CardContent className="p-6 text-center">
+              <AlertTriangle className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
+              <h3 className="font-semibold mb-1">Pending Verifications</h3>
+              <p className="text-sm text-gray-600">{stats.pendingVerifications} waiting</p>
+              <Button size="sm" className="mt-2" onClick={() => handleQuickAction("View Verifications")}>
+                Review Now
+              </Button>
+            </CardContent>
+          </Card>
+        </Link>
 
-        <Card className="cursor-pointer hover:shadow-md transition-shadow">
-          <CardContent className="p-6 text-center">
-            <Clock className="w-8 h-8 text-blue-500 mx-auto mb-2" />
-            <h3 className="font-semibold mb-1">Active Jobs</h3>
-            <p className="text-sm text-gray-600">{stats.activeJobs} in progress</p>
-          </CardContent>
-        </Card>
+        <Link href="/admin/jobs">
+          <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <CardContent className="p-6 text-center">
+              <Clock className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+              <h3 className="font-semibold mb-1">Active Jobs</h3>
+              <p className="text-sm text-gray-600">{stats.activeJobs} in progress</p>
+              <Button size="sm" className="mt-2" onClick={() => handleQuickAction("View Jobs")}>
+                Monitor Jobs
+              </Button>
+            </CardContent>
+          </Card>
+        </Link>
 
-        <Card className="cursor-pointer hover:shadow-md transition-shadow">
-          <CardContent className="p-6 text-center">
-            <AlertTriangle className="w-8 h-8 text-red-500 mx-auto mb-2" />
-            <h3 className="font-semibold mb-1">Disputes</h3>
-            <p className="text-sm text-gray-600">3 need attention</p>
-          </CardContent>
-        </Card>
+        <Link href="/admin/disputes">
+          <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <CardContent className="p-6 text-center">
+              <AlertTriangle className="w-8 h-8 text-red-500 mx-auto mb-2" />
+              <h3 className="font-semibold mb-1">Disputes</h3>
+              <p className="text-sm text-gray-600">3 need attention</p>
+              <Button
+                size="sm"
+                variant="destructive"
+                className="mt-2"
+                onClick={() => handleQuickAction("Handle Disputes")}
+              >
+                Resolve Now
+              </Button>
+            </CardContent>
+          </Card>
+        </Link>
 
-        <Card className="cursor-pointer hover:shadow-md transition-shadow">
-          <CardContent className="p-6 text-center">
-            <TrendingUp className="w-8 h-8 text-green-500 mx-auto mb-2" />
-            <h3 className="font-semibold mb-1">Analytics</h3>
-            <p className="text-sm text-gray-600">View reports</p>
-          </CardContent>
-        </Card>
+        <Link href="/admin/analytics">
+          <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <CardContent className="p-6 text-center">
+              <TrendingUp className="w-8 h-8 text-green-500 mx-auto mb-2" />
+              <h3 className="font-semibold mb-1">Analytics</h3>
+              <p className="text-sm text-gray-600">View reports</p>
+              <Button
+                size="sm"
+                variant="outline"
+                className="mt-2 bg-transparent"
+                onClick={() => handleQuickAction("View Analytics")}
+              >
+                View Reports
+              </Button>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
     </div>
   )

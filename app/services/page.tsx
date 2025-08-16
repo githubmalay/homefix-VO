@@ -200,7 +200,7 @@ export default function ServicesPage() {
               <Card>
                 <CardContent className="p-6 text-center">
                   <h3 className="text-xl font-semibold mb-2">Service Call</h3>
-                  <div className="text-3xl font-bold text-blue-600 mb-4">$49</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-4">₹3,920</div>
                   <p className="text-gray-600 mb-4">Diagnostic fee applied to repair cost</p>
                   <ul className="text-sm text-gray-500 space-y-1">
                     <li>• Professional assessment</li>
@@ -212,7 +212,7 @@ export default function ServicesPage() {
               <Card className="border-blue-200 bg-blue-50">
                 <CardContent className="p-6 text-center">
                   <h3 className="text-xl font-semibold mb-2">Standard Repair</h3>
-                  <div className="text-3xl font-bold text-blue-600 mb-4">$89/hr</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-4">₹7,120/hr</div>
                   <p className="text-gray-600 mb-4">Most common repairs and maintenance</p>
                   <ul className="text-sm text-gray-500 space-y-1">
                     <li>• 1-hour minimum</li>
@@ -224,7 +224,7 @@ export default function ServicesPage() {
               <Card>
                 <CardContent className="p-6 text-center">
                   <h3 className="text-xl font-semibold mb-2">Emergency</h3>
-                  <div className="text-3xl font-bold text-red-600 mb-4">$149/hr</div>
+                  <div className="text-3xl font-bold text-red-600 mb-4">₹11,920/hr</div>
                   <p className="text-gray-600 mb-4">24/7 emergency response</p>
                   <ul className="text-sm text-gray-500 space-y-1">
                     <li>• Immediate response</li>

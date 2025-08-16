@@ -15,12 +15,12 @@ export default function BookingPage() {
   const [step, setStep] = useState(1)
 
   const services = [
-    { id: "plumbing", name: "Plumbing", price: "$80-150", duration: "1-2 hours" },
-    { id: "electrical", name: "Electrical", price: "$100-200", duration: "1-3 hours" },
-    { id: "hvac", name: "HVAC", price: "$120-250", duration: "2-4 hours" },
-    { id: "carpentry", name: "Carpentry", price: "$90-180", duration: "2-5 hours" },
-    { id: "painting", name: "Painting", price: "$60-120", duration: "3-6 hours" },
-    { id: "appliance", name: "Appliance Repair", price: "$70-140", duration: "1-2 hours" },
+    { id: "plumbing", name: "Plumbing", price: "₹6,400-12,000", duration: "1-2 hours" },
+    { id: "electrical", name: "Electrical", price: "₹8,000-16,000", duration: "1-3 hours" },
+    { id: "hvac", name: "HVAC", price: "₹9,600-20,000", duration: "2-4 hours" },
+    { id: "carpentry", name: "Carpentry", price: "₹7,200-14,400", duration: "2-5 hours" },
+    { id: "painting", name: "Painting", price: "₹4,800-9,600", duration: "3-6 hours" },
+    { id: "appliance", name: "Appliance Repair", price: "₹5,600-11,200", duration: "1-2 hours" },
   ]
 
   const timeSlots = [
@@ -44,7 +44,7 @@ export default function BookingPage() {
       rating: 4.9,
       reviews: 127,
       specialties: ["Plumbing", "HVAC"],
-      price: "$85/hr",
+      price: "₹6,800/hr",
       image: "/placeholder-tjwzg.png",
     },
     {
@@ -53,7 +53,7 @@ export default function BookingPage() {
       rating: 4.8,
       reviews: 94,
       specialties: ["Electrical", "Appliance Repair"],
-      price: "$90/hr",
+      price: "₹7,200/hr",
       image: "/female-electrician-headshot.png",
     },
     {
@@ -62,7 +62,7 @@ export default function BookingPage() {
       rating: 4.7,
       reviews: 156,
       specialties: ["Carpentry", "Painting"],
-      price: "$80/hr",
+      price: "₹6,400/hr",
       image: "/placeholder-g5i6d.png",
     },
   ]
