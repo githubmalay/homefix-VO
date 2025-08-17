@@ -34,7 +34,7 @@ export default function ForWorkersPage() {
               </div>
               <div className="bg-orange-100 rounded-lg p-8">
                 <img
-                  src="/smiling-handyman.png"
+                  src="/home-repair-team.png"
                   alt="Professional worker"
                   className="w-full h-80 object-cover rounded-lg"
                 />
