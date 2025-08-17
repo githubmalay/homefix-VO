@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Star, Clock, CheckCircle, ArrowRight, Zap } from "lucide-react"
+import { Star, Clock, CheckCircle, ArrowRight, Zap, Wrench, Shield, Users } from "lucide-react"
 
 export function HeroSection() {
   const handleRequestFix = () => {
@@ -14,35 +14,37 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-background via-card/30 to-muted/50 py-12 md:py-20">
+      {/* Floating background glows */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-5 left-5 md:top-10 md:left-10 w-48 h-48 md:w-72 md:h-72 bg-primary/5 rounded-full blur-3xl float-animation"></div>
+        <div className="absolute top-5 left-5 md:top-10 md:left-10 w-48 h-48 md:w-72 md:h-72 bg-primary/10 rounded-full blur-3xl float-animation"></div>
         <div
-          className="absolute bottom-5 right-5 md:bottom-10 md:right-10 w-64 h-64 md:w-96 md:h-96 bg-secondary/5 rounded-full blur-3xl float-animation"
+          className="absolute bottom-5 right-5 md:bottom-10 md:right-10 w-64 h-64 md:w-96 md:h-96 bg-secondary/10 rounded-full blur-3xl float-animation"
           style={{ animationDelay: "3s" }}
         ></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+          {/* Left Content */}
           <div className="space-y-6 md:space-y-8 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium border border-primary/20">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium border border-primary/20 shadow-sm">
               <Zap className="w-3 h-3 md:w-4 md:h-4" />
               Fast & Reliable Service
             </div>
 
             <div className="space-y-4 md:space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-foreground leading-tight tracking-tight">
                 Home Problems?
                 <br />
                 <span className="gradient-text">Fixed Fast.</span>
               </h1>
 
               <p className="text-base md:text-xl text-muted-foreground max-w-lg leading-relaxed mx-auto lg:mx-0">
-                Connect with verified local handymen who can arrive within an hour. From leaky taps to broken chairs -
-                get it fixed today, not next week.
+                Connect with trusted local handymen who arrive within an hour. From leaky taps to broken chairs — get it fixed today, not next week.
               </p>
             </div>
 
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
@@ -62,11 +64,12 @@ export function HeroSection() {
               </Button>
             </div>
 
+            {/* Stats */}
             <div className="grid grid-cols-3 gap-4 md:gap-8 pt-6 md:pt-8">
               <div className="text-center group">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
+                <div className="flex items-center justify-center mb-2">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-green-600" />
                   </div>
                 </div>
                 <div className="text-xl md:text-3xl font-bold text-foreground mb-1">100%</div>
@@ -74,9 +77,9 @@ export function HeroSection() {
               </div>
 
               <div className="text-center group">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Clock className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                <div className="flex items-center justify-center mb-2">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Clock className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                   </div>
                 </div>
                 <div className="text-xl md:text-3xl font-bold text-foreground mb-1">&lt;1hr</div>
@@ -84,9 +87,9 @@ export function HeroSection() {
               </div>
 
               <div className="text-center group">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-yellow-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-600 fill-current" />
+                <div className="flex items-center justify-center mb-2">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Star className="w-5 h-5 md:w-6 md:h-6 text-yellow-600 fill-current" />
                   </div>
                 </div>
                 <div className="text-xl md:text-3xl font-bold text-foreground mb-1">4.9</div>
@@ -95,48 +98,36 @@ export function HeroSection() {
             </div>
           </div>
 
+          {/* Right Side: Animated Feature Card */}
           <div className="relative lg:pl-8 mt-8 lg:mt-0">
-            <div className="relative float-animation">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl md:rounded-3xl blur-2xl transform rotate-6"></div>
-{/* Small Image */}
-<img
-  src="/smiling-handyman.png"
-  alt="Professional handyman"
-  style={{ width: "150px", height: "200px" }}
-  className="relative rounded-2xl md:rounded-3xl shadow-2xl border border-border/50 mx-auto"
-/>
-
-{/* Big Image */}
-<img
-  src="/smiling-handyman.png"
-  alt="Professional handyman"
-  style={{ width: "300px", height: "400px" }}
-  className="relative rounded-2xl md:rounded-3xl shadow-2xl border border-border/50 mx-auto"
-/>
-
-
-
-              <div className="absolute top-3 right-3 md:top-6 md:right-6 bg-card/90 backdrop-blur-sm rounded-xl md:rounded-2xl p-2 md:p-4 shadow-xl border border-border/50">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <div className="w-6 h-6 md:w-8 md:h-8 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <Star className="w-3 h-3 md:w-4 md:h-4 text-yellow-600 fill-current" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-foreground text-sm md:text-base">4.9</div>
-                    <div className="text-xs text-muted-foreground">Rating</div>
-                  </div>
+            <div className="relative bg-card/80 backdrop-blur-lg border border-border/50 rounded-2xl md:rounded-3xl shadow-2xl p-6 md:p-10 flex flex-col gap-6 hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-500">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Wrench className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg md:text-xl font-semibold">Verified Experts</h3>
+                  <p className="text-sm text-muted-foreground">Only trusted, background-checked handymen.</p>
                 </div>
               </div>
 
-              <div className="absolute bottom-3 left-3 md:bottom-6 md:left-6 bg-card/90 backdrop-blur-sm rounded-xl md:rounded-2xl p-2 md:p-4 shadow-xl border border-border/50">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-xs md:text-sm font-bold text-primary">JM</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground text-sm md:text-base">John M.</div>
-                    <div className="text-xs text-muted-foreground">Expert Handyman</div>
-                  </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-green-600" />
+                </div>
+                <div>
+                  <h3 className="text-lg md:text-xl font-semibold">Secure & Reliable</h3>
+                  <p className="text-sm text-muted-foreground">Safety and reliability guaranteed with every booking.</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                  <Users className="w-6 h-6 text-yellow-600" />
+                </div>
+                <div>
+                  <h3 className="text-lg md:text-xl font-semibold">Happy Customers</h3>
+                  <p className="text-sm text-muted-foreground">Thousands of satisfied households trust us daily.</p>
                 </div>
               </div>
             </div>
