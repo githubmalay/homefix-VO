@@ -243,7 +243,7 @@ export default function ForWorkersPage() {
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <img
-                      src="/female-handywoman-headshot.png"
+                      src="/placeholder-gvk65.png"
                       alt="Sarah Chen"
                       className="w-12 h-12 rounded-full object-cover"
                     />
