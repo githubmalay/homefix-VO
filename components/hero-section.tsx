@@ -101,8 +101,9 @@ export function HeroSection() {
 <img
   src="/smiling-handyman.png"
   alt="Professional handyman"
-  className="relative rounded-2xl md:rounded-3xl max-w-xs h-auto shadow-2xl border border-border/50 mx-auto"
+  className="relative rounded-2xl md:rounded-3xl w-48 h-auto shadow-2xl border border-border/50 mx-auto"
 />
+
 
 
               <div className="absolute top-3 right-3 md:top-6 md:right-6 bg-card/90 backdrop-blur-sm rounded-xl md:rounded-2xl p-2 md:p-4 shadow-xl border border-border/50">
