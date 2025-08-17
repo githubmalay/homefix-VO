@@ -98,11 +98,12 @@ export function HeroSection() {
           <div className="relative lg:pl-8 mt-8 lg:mt-0">
             <div className="relative float-animation">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl md:rounded-3xl blur-2xl transform rotate-6"></div>
-              <img
-                src="/smiling-handyman.png"
-                alt="Professional handyman"
-                className="relative rounded-2xl md:rounded-3xl w-full h-auto shadow-2xl border border-border/50 max-w-md mx-auto lg:max-w-none"
-              />
+<img
+  src="/smiling-handyman.png"
+  alt="Professional handyman"
+  className="relative rounded-2xl md:rounded-3xl max-w-xs h-auto shadow-2xl border border-border/50 mx-auto"
+/>
+
 
               <div className="absolute top-3 right-3 md:top-6 md:right-6 bg-card/90 backdrop-blur-sm rounded-xl md:rounded-2xl p-2 md:p-4 shadow-xl border border-border/50">
                 <div className="flex items-center gap-2 md:gap-3">
