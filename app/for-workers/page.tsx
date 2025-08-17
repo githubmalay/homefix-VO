@@ -36,7 +36,7 @@ export default function ForWorkersPage() {
                 <img
                   src="/smiling-handyman.png"
                   alt="Professional worker"
-                  className="w-full h-80 object-cover rounded-lg"
+                  className="w-full h-60 object-cover rounded-lg"
                 />
               </div>
             </div>
