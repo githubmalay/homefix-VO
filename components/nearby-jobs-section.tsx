@@ -47,7 +47,7 @@ export function NearbyJobsSection() {
       id: 3,
       worker: {
         name: "Sarah Wilson",
-        avatar: "/female-handywoman-headshot.png",
+        avatar: "/placeholder-4izxq.png",
         rating: 4.7,
         reviews: 156,
         skills: ["Electrical", "Painting"],
