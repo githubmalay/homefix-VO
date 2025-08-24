@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Star, MapPin, Clock, DollarSign, CheckCircle, TrendingUp, Briefcase, User, Calendar } from "lucide-react"
 import Link from "next/link"
+import { IndianRupee } from "lucide-react"
 
 export default function HandymanDashboard() {
   const handymanStats = {
@@ -72,12 +73,12 @@ export default function HandymanDashboard() {
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-lg flex items-center">
-              <DollarSign className="w-5 h-5 text-green-500 mr-2" />
+<IndianRupee className="w-5 h-5 text-green-500 mr-2" />
               Monthly Earnings
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">${handymanStats.earnings}</div>
+            <div className="text-2xl font-bold text-blue-600">₹{handymanStats.earnings}</div>
             <p className="text-sm text-gray-600">This month</p>
           </CardContent>
         </Card>
@@ -90,7 +91,7 @@ export default function HandymanDashboard() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">${handymanStats.weeklyEarnings}</div>
+            <div className="text-2xl font-bold text-blue-600">₹{handymanStats.weeklyEarnings}</div>
             <p className="text-sm text-gray-600">This week</p>
           </CardContent>
         </Card>
