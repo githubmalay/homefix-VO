@@ -98,7 +98,7 @@ export default function HandymanMyJobs() {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div className="text-xl font-bold text-green-600">${job.amount}</div>
+                    <div className="text-xl font-bold text-green-600">₹{job.amount}</div>
                     <div className="flex gap-2">
                       <Button size="sm" variant="outline">
                         <Phone className="w-4 h-4 mr-1" />
@@ -147,7 +147,7 @@ export default function HandymanMyJobs() {
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="text-lg font-semibold text-green-600">${job.amount}</div>
+                      <div className="text-lg font-semibold text-green-600">₹{job.amount}</div>
                       <div className="flex items-center">
                         <span className="text-sm text-gray-600 mr-1">Rating:</span>
                         <div className="flex">
