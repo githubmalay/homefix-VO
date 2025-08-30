@@ -120,7 +120,7 @@ export default function PaymentPage() {
                 </div>
 
                 <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
-                  Pay ${jobDetails.total} - Confirm Job
+                  Pay ₹{jobDetails.total} - Confirm Job
                 </Button>
               </form>
             </CardContent>
@@ -142,16 +142,16 @@ export default function PaymentPage() {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>Service Cost</span>
-                    <span>${jobDetails.price}</span>
+                    <span>₹{jobDetails.price}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Platform Fee</span>
-                    <span>${jobDetails.serviceFee}</span>
+                    <span>₹{jobDetails.serviceFee}</span>
                   </div>
                   <Separator />
                   <div className="flex justify-between font-semibold text-lg">
                     <span>Total</span>
-                    <span>${jobDetails.total}</span>
+                    <span>₹{jobDetails.total}</span>
                   </div>
                 </div>
 
