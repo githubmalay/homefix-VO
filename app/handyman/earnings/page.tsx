@@ -45,7 +45,7 @@ export default function HandymanEarnings() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">${earningsData.totalEarnings.toLocaleString()}</div>
+            <div className="text-2xl font-bold text-blue-600">₹{earningsData.totalEarnings.toLocaleString()}</div>
             <p className="text-sm text-gray-600">All time</p>
           </CardContent>
         </Card>
@@ -58,7 +58,7 @@ export default function HandymanEarnings() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">${earningsData.monthlyEarnings}</div>
+            <div className="text-2xl font-bold text-blue-600">₹{earningsData.monthlyEarnings}</div>
             <p className="text-sm text-gray-600">+18% from last month</p>
           </CardContent>
         </Card>
@@ -71,7 +71,7 @@ export default function HandymanEarnings() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">${earningsData.weeklyEarnings}</div>
+            <div className="text-2xl font-bold text-blue-600">₹{earningsData.weeklyEarnings}</div>
             <p className="text-sm text-gray-600">+12% from last week</p>
           </CardContent>
         </Card>
@@ -84,7 +84,7 @@ export default function HandymanEarnings() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">${earningsData.pendingPayouts}</div>
+            <div className="text-2xl font-bold text-blue-600">₹{earningsData.pendingPayouts}</div>
             <p className="text-sm text-gray-600">Awaiting payout</p>
           </CardContent>
         </Card>
@@ -112,7 +112,7 @@ export default function HandymanEarnings() {
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-semibold text-green-600">${earning.amount}</span>
+                  <span className="text-lg font-semibold text-green-600">₹{earning.amount}</span>
                   <span className="text-sm text-gray-500">{earning.date}</span>
                 </div>
               </div>

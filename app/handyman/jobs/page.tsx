@@ -90,7 +90,7 @@ export default function HandymanJobs() {
               </div>
 
               <div className="flex items-center justify-between">
-                <div className="text-2xl font-bold text-green-600">${job.estimatedPay}</div>
+                <div className="text-2xl font-bold text-green-600">₹{job.estimatedPay}</div>
                 <div className="space-x-2">
                   <Button size="sm" variant="outline">
                     View Details

@@ -56,7 +56,7 @@ export default function AdminJobs() {
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-semibold text-green-600">${job.amount}</span>
+                  <span className="text-lg font-semibold text-green-600">₹{job.amount}</span>
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-500">{job.date}</span>
                     <Button size="sm" variant="outline">

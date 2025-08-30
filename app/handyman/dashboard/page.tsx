@@ -193,7 +193,7 @@ export default function HandymanDashboard() {
                   <div className="text-sm text-gray-500">{job.timePosted}</div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <div className="text-lg font-bold text-green-600">${job.estimatedPay}</div>
+                  <div className="text-lg font-bold text-green-600">₹{job.estimatedPay}</div>
                   <div className="space-x-2">
                     <Button size="sm" variant="outline">
                       View Details
