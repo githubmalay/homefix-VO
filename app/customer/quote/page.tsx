@@ -88,7 +88,7 @@ export default function QuotePage() {
                   </div>
 
                   <div className="md:text-right">
-                    <div className="text-3xl font-bold text-blue-600 mb-2">${quote.price}</div>
+                    <div className="text-3xl font-bold text-blue-600 mb-2">₹{quote.price}</div>
                     <p className="text-sm text-gray-600 mb-4">Total estimated cost</p>
                     <Button
                       onClick={() => handleAcceptQuote(quote.id)}
