@@ -1,9 +1,26 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Star, Clock, CheckCircle, ArrowRight, Zap } from "lucide-react"
+import { Star, Clock, CheckCircle, ArrowRight, Zap, Wrench } from "lucide-react"
+import { getBookings } from "@/lib/localStorage";
+import { useEffect, useState } from "react";
+
+// Mock user data for demonstration. In a real app, you would fetch this from a database.
+const mockUser = {
+  isLoggedIn: true,
+  name: "Meet",
+};
 
 export function HeroSection() {
+  const [lastService, setLastService] = useState<string | null>(null);
+
+  useEffect(() => {
+    const bookings = getBookings();
+    if (bookings.length > 0) {
+      setLastService(bookings[bookings.length - 1].service);
+    }
+  }, []);
+
   const handleRequestFix = () => {
     window.location.href = "/customer/request"
   }
@@ -11,6 +28,37 @@ export function HeroSection() {
   const handleBecomeWorker = () => {
     window.location.href = "/handyman/register"
   }
+
+  // Define dynamic content based on mock user data and last service booked
+  const dynamicHeading = mockUser.isLoggedIn && lastService 
+    ? `Hello, ${mockUser.name}. Need another ${lastService} fix?` 
+    : "Home Problems?";
+  
+  const dynamicSubtext = mockUser.isLoggedIn && lastService 
+    ? `Our team is ready to help with your ${lastService} needs or any other repair you might have.` 
+    : "Connect with verified local handymen who can arrive within an hour. From leaky taps to broken chairs – get it fixed today, not next week.";
+
+  const dynamicCtaButton = mockUser.isLoggedIn && lastService 
+    ? (
+      <Button
+        size="lg"
+        className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group w-full sm:w-auto"
+        onClick={handleRequestFix}
+      >
+        Request a {lastService} Fix
+        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+      </Button>
+    )
+    : (
+      <Button
+        size="lg"
+        className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group w-full sm:w-auto"
+        onClick={handleRequestFix}
+      >
+        Request a Fix Now
+        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+      </Button>
+    );
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-background via-card/30 to-muted/50 py-16 md:py-24">
@@ -35,27 +83,19 @@ export function HeroSection() {
 
             {/* Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight">
-              Home Problems?
+              {dynamicHeading}
               <br />
               <span className="gradient-text">Fixed Fast.</span>
             </h1>
 
             {/* Sub-text */}
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed mx-auto lg:mx-0">
-              Connect with verified local handymen who can arrive within an hour. From leaky taps to broken chairs – 
-              get it fixed today, not next week.
+              {dynamicSubtext}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group w-full sm:w-auto"
-                onClick={handleRequestFix}
-              >
-                Request a Fix Now
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              {dynamicCtaButton}
               <Button
                 variant="outline"
                 size="lg"

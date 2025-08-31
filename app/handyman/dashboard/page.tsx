@@ -1,40 +1,34 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, MapPin, Clock, DollarSign, CheckCircle, TrendingUp, Briefcase, User, Calendar } from "lucide-react"
 import Link from "next/link"
+import { getBookings } from "@/lib/localStorage"
+import { useEffect, useState } from "react"
 import { IndianRupee } from "lucide-react"
 
 export default function HandymanDashboard() {
+  const [availableJobs, setAvailableJobs] = useState<any[]>([]);
+  const [pendingJobs, setPendingJobs] = useState<any[]>([]);
+
+  useEffect(() => {
+    const allBookings = getBookings();
+    setAvailableJobs(allBookings.filter(job => job.status === "Confirmed" || job.status === "Pending"));
+    setPendingJobs(allBookings.filter(job => job.status === "In Progress"));
+  }, []);
+
   const handymanStats = {
     rating: 4.8,
     completedJobs: 127,
     earnings: 2450,
     responseTime: "< 5 min",
     weeklyEarnings: 580,
-    pendingJobs: 3,
-  }
+    pendingJobs: pendingJobs.length,
+  };
 
-  const availableJobs = [
-    {
-      id: 1,
-      title: "Kitchen Sink Repair",
-      description: "Leaky faucet needs fixing",
-      location: "Downtown, 1.2 miles",
-      urgency: "Medium",
-      estimatedPay: 85,
-      timePosted: "15 min ago",
-    },
-    {
-      id: 2,
-      title: "Bathroom Tile Replacement",
-      description: "Replace 3 cracked tiles in shower",
-      location: "Uptown, 2.1 miles",
-      urgency: "Low",
-      estimatedPay: 120,
-      timePosted: "1 hour ago",
-    },
-  ]
+  const currentAvailableJobs = availableJobs.slice(0, 2);
 
   return (
     <div className="p-8">
@@ -92,7 +86,7 @@ export default function HandymanDashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-blue-600">₹{handymanStats.weeklyEarnings}</div>
-            <p className="text-sm text-gray-600">This week</p>
+            <p className="text-sm text-gray-600">+12% from last week</p>
           </CardContent>
         </Card>
 
@@ -172,28 +166,28 @@ export default function HandymanDashboard() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {availableJobs.map((job) => (
+            {currentAvailableJobs.map((job) => (
               <div key={job.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-semibold">{job.title}</h3>
+                  <h3 className="font-semibold">{job.service}</h3>
                   <Badge
                     variant={
-                      job.urgency === "High" ? "destructive" : job.urgency === "Medium" ? "default" : "secondary"
+                      job.status === "Confirmed" ? "default" : "secondary"
                     }
                   >
-                    {job.urgency}
+                    {job.status}
                   </Badge>
                 </div>
-                <p className="text-sm text-gray-600 mb-2">{job.description}</p>
+                <p className="text-sm text-gray-600 mb-2">Customer: {job.customerName}</p>
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center text-sm text-gray-600">
                     <MapPin className="w-4 h-4 mr-1" />
-                    {job.location}
+                    {"1.2 miles away"}
                   </div>
-                  <div className="text-sm text-gray-500">{job.timePosted}</div>
+                  <div className="text-sm text-gray-500">{job.date} {job.time}</div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <div className="text-lg font-bold text-green-600">₹{job.estimatedPay}</div>
+                  <div className="text-lg font-bold text-green-600">₹{job.amount}</div>
                   <div className="space-x-2">
                     <Button size="sm" variant="outline">
                       View Details

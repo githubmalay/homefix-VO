@@ -4,16 +4,37 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Users, Wrench, IndianRupee, AlertTriangle, TrendingUp, Clock } from "lucide-react"
 import Link from "next/link"
+import { getBookings, getHandymen, getCustomers } from "@/lib/localStorage";
+import { useEffect, useState } from "react";
 
 export default function AdminDashboard() {
+  const [totalCustomers, setTotalCustomers] = useState(0);
+  const [activeHandymen, setActiveHandymen] = useState(0);
+  const [pendingVerifications, setPendingVerifications] = useState(0);
+  const [activeJobs, setActiveJobs] = useState(0);
+  const [completedJobs, setCompletedJobs] = useState(0);
+
+  useEffect(() => {
+    const allCustomers = getCustomers();
+    setTotalCustomers(allCustomers.length);
+
+    const allHandymen = getHandymen();
+    setActiveHandymen(allHandymen.filter(h => h.status === "verified").length);
+    setPendingVerifications(allHandymen.filter(h => h.status === "pending").length);
+
+    const allBookings = getBookings();
+    setActiveJobs(allBookings.filter(job => job.status === "In Progress").length);
+    setCompletedJobs(allBookings.filter(job => job.status === "Completed").length);
+  }, []);
+
   const stats = {
-    totalCustomers: 1247,
-    activeHandymen: 89,
-    monthlyRevenue: 3623440, // converted to Indian rupees (45230 * 80)
-    pendingVerifications: 12,
-    activeJobs: 34,
-    completedJobs: 892,
-  }
+    totalCustomers: totalCustomers,
+    activeHandymen: activeHandymen,
+    monthlyRevenue: 3623440,
+    pendingVerifications: pendingVerifications,
+    activeJobs: activeJobs,
+    completedJobs: completedJobs,
+  };
 
   const handleQuickAction = (action: string) => {
     console.log(`[v0] Quick action clicked: ${action}`)
@@ -101,7 +122,7 @@ export default function AdminDashboard() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">96.3%</div>
+            <div className="text-2xl font-bold text-blue-600">{(stats.completedJobs / (stats.completedJobs + stats.activeJobs) * 100).toFixed(1)}%</div>
             <p className="text-sm text-gray-600">Job completion rate</p>
           </CardContent>
         </Card>
@@ -162,8 +183,7 @@ export default function AdminDashboard() {
                 size="sm"
                 variant="outline"
                 className="mt-2 bg-transparent"
-                onClick={() => handleQuickAction("View Analytics")}
-              >
+                onClick={() => handleQuickAction("View Analytics")}>
                 View Reports
               </Button>
             </CardContent>

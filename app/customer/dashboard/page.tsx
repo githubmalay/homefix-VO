@@ -1,31 +1,22 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { Star, Clock, CheckCircle, Plus } from "lucide-react"
+import { getBookings } from "@/lib/localStorage";
+import { useEffect, useState } from "react";
 
 export default function CustomerDashboard() {
-  const activeJobs = [
-    {
-      id: 1,
-      title: "Kitchen Sink Repair",
-      handyman: "John Smith",
-      status: "In Progress",
-      eta: "2 hours",
-      rating: 4.8,
-    },
-  ]
+  const [activeJobs, setActiveJobs] = useState<any[]>([]);
+  const [jobHistory, setJobHistory] = useState<any[]>([]);
 
-  const jobHistory = [
-    {
-      id: 2,
-      title: "Bathroom Tile Fix",
-      handyman: "Sarah Johnson",
-      status: "Completed",
-      date: "2024-01-15",
-      rating: 5.0,
-    },
-  ]
+  useEffect(() => {
+    const allBookings = getBookings();
+    setActiveJobs(allBookings.filter(job => job.status === "In Progress" || job.status === "Confirmed"));
+    setJobHistory(allBookings.filter(job => job.status === "Completed"));
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-8">
@@ -83,17 +74,17 @@ export default function CustomerDashboard() {
                   {activeJobs.map((job) => (
                     <div key={job.id} className="border rounded-lg p-4">
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-semibold">{job.title}</h3>
+                        <h3 className="font-semibold">{job.service}</h3>
                         <Badge variant="secondary">
                           <Clock className="w-3 h-3 mr-1" />
-                          {job.eta}
+                          {job.status}
                         </Badge>
                       </div>
                       <p className="text-sm text-gray-600 mb-2">Handyman: {job.handyman}</p>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center">
                           <Star className="w-4 h-4 text-yellow-400 mr-1" />
-                          <span className="text-sm">{job.rating}</span>
+                          <span className="text-sm">4.8</span>
                         </div>
                         <Link href={`/customer/track/${job.id}`}>
                           <Button size="sm" variant="outline">
@@ -121,7 +112,7 @@ export default function CustomerDashboard() {
                   {jobHistory.map((job) => (
                     <div key={job.id} className="border rounded-lg p-4">
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-semibold">{job.title}</h3>
+                        <h3 className="font-semibold">{job.service}</h3>
                         <Badge variant="default" className="bg-green-100 text-green-800">
                           <CheckCircle className="w-3 h-3 mr-1" />
                           {job.status}
@@ -131,7 +122,7 @@ export default function CustomerDashboard() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center">
                           <Star className="w-4 h-4 text-yellow-400 mr-1" />
-                          <span className="text-sm">{job.rating}</span>
+                          <span className="text-sm">5.0</span>
                         </div>
                         <span className="text-sm text-gray-500">{job.date}</span>
                       </div>

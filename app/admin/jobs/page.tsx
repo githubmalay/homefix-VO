@@ -1,29 +1,18 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Eye } from "lucide-react"
+import { getBookings } from "@/lib/localStorage";
+import { useEffect, useState } from "react";
 
 export default function AdminJobs() {
-  const recentJobs = [
-    {
-      id: 1,
-      customer: "John Doe",
-      handyman: "Alex Smith",
-      service: "Kitchen Sink Repair",
-      amount: 85,
-      status: "Completed",
-      date: "2024-01-16",
-    },
-    {
-      id: 2,
-      customer: "Jane Wilson",
-      handyman: "Mike Brown",
-      service: "Electrical Outlet",
-      amount: 120,
-      status: "In Progress",
-      date: "2024-01-16",
-    },
-  ]
+  const [recentJobs, setRecentJobs] = useState<any[]>([]);
+
+  useEffect(() => {
+    setRecentJobs(getBookings());
+  }, []);
 
   return (
     <div className="p-8">
@@ -39,34 +28,38 @@ export default function AdminJobs() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {recentJobs.map((job) => (
-              <div key={job.id} className="border rounded-lg p-4">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="font-semibold">{job.service}</h3>
-                    <p className="text-sm text-gray-600">
-                      Customer: {job.customer} | Handyman: {job.handyman}
-                    </p>
+            {recentJobs.length > 0 ? (
+              recentJobs.map((job) => (
+                <div key={job.id} className="border rounded-lg p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h3 className="font-semibold">{job.service}</h3>
+                      <p className="text-sm text-gray-600">
+                        Customer: {job.customerName} | Handyman: {job.handyman}
+                      </p>
+                    </div>
+                    <Badge
+                      variant={job.status === "Completed" ? "default" : "secondary"}
+                      className={job.status === "Completed" ? "bg-green-100 text-green-800" : ""}
+                    >
+                      {job.status}
+                    </Badge>
                   </div>
-                  <Badge
-                    variant={job.status === "Completed" ? "default" : "secondary"}
-                    className={job.status === "Completed" ? "bg-green-100 text-green-800" : ""}
-                  >
-                    {job.status}
-                  </Badge>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-semibold text-green-600">₹{job.amount}</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-500">{job.date}</span>
-                    <Button size="sm" variant="outline">
-                      <Eye className="w-4 h-4 mr-1" />
-                      View Details
-                    </Button>
+                  <div className="flex justify-between items-center">
+                    <span className="text-lg font-semibold text-green-600">₹{job.amount}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-gray-500">{job.date}</span>
+                      <Button size="sm" variant="outline">
+                        <Eye className="w-4 h-4 mr-1" />
+                        View Details
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p className="text-gray-500">No jobs found.</p>
+            )}
           </div>
         </CardContent>
       </Card>
