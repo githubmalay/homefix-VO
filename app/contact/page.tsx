@@ -10,6 +10,18 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useState } from "react"
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+
+const containerStyle = {
+  width: '100%',
+  height: '240px',
+  borderRadius: '0.5rem',
+};
+
+const center = {
+  lat: 37.7749, // Example coordinates for San Francisco
+  lng: -122.4194,
+};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,6 +32,11 @@ export default function ContactPage() {
     subject: "",
     message: "",
   })
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: "YOUR_API_KEY" // Replace with your actual API key
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -76,7 +93,7 @@ export default function ContactPage() {
               <Card className="text-center border-border">
                 <CardContent className="p-6">
                   <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-secondary text-2xl">✉️</span>
+                    <span className="text-secondary text-2xl">📧</span>
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-foreground">Email Us</h3>
                   <p className="text-muted-foreground mb-4">Send us a detailed message</p>
@@ -183,9 +200,17 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-3xl font-bold text-foreground mb-6">Visit Our Office</h2>
                 <div className="bg-muted rounded-lg p-6 mb-6">
-                  <div className="aspect-video bg-muted-foreground/20 rounded-lg flex items-center justify-center mb-4">
-                    <span className="text-muted-foreground">Interactive Map</span>
-                  </div>
+                  {isLoaded ? (
+                    <GoogleMap
+                      mapContainerStyle={containerStyle}
+                      center={center}
+                      zoom={10}
+                    />
+                  ) : (
+                    <div className="aspect-video bg-muted-foreground/20 rounded-lg flex items-center justify-center mb-4">
+                      <span className="text-muted-foreground">Loading map...</span>
+                    </div>
+                  )}
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       <span className="text-primary mt-1">📍</span>
