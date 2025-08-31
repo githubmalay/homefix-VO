@@ -74,7 +74,6 @@ export default function HandymanSettings() {
               <CreditCard className="w-5 h-5 mr-2" />
               Payment Settings
             </CardTitle>
-            <CardDescription>Manage your payment information</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>

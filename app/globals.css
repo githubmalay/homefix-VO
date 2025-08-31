@@ -149,7 +149,6 @@
     }
   }
 
-  /* Added enhanced login page animations and styling */
   .login-container {
     background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
     position: relative;
@@ -162,43 +161,12 @@
     animation: slideInUp 0.8s ease-out;
   }
 
-  .pulse-animation {
-    animation: pulse 2s ease-in-out infinite;
+  .dashboard-card {
+    @apply bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all duration-200;
   }
 
-  .input-focus {
-    transition: all 0.3s ease;
-  }
-
-  .input-focus:focus {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    border-color: hsl(var(--primary));
-  }
-
-  .login-button {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .login-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2);
-  }
-
-  .login-button:active {
-    transform: translateY(0);
-  }
-
-  .social-button {
-    transition: all 0.3s ease;
-  }
-
-  .social-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+  .sidebar-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
   }
 
   @keyframes slideInUp {
@@ -210,33 +178,5 @@
       opacity: 1;
       transform: translateY(0);
     }
-  }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-  }
-
-  /* Enhanced dashboard styling for modern look */
-  .dashboard-card {
-    @apply bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all duration-200;
-  }
-
-  .dashboard-card:hover {
-    @apply shadow-lg shadow-primary/10 border-primary/20;
-  }
-
-  .sidebar-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
-  }
-
-  .glass-effect {
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.1);
   }
 }
