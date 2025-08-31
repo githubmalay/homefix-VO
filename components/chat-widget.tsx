@@ -99,10 +99,21 @@ export function ChatWidget() {
       case "ask_handyman":
         const selectedHandyman = handymen.find(h => userMessage.toLowerCase().includes(h.toLowerCase()));
         if (selectedHandyman) {
-          setBookingData(prev => ({ ...prev, handyman: selectedHandyman }));
-          const finalBooking = { ...bookingData, handyman: selectedHandyman, customerName: "Meet" };
-          saveBooking(finalBooking);
-          respond(`Booking confirmed! You've successfully booked a ${finalBooking.service} with ${finalBooking.handyman} for ${finalBooking.date} at ${finalBooking.time}. Your booking ID is ${finalBooking.id}.`, "initial");
+          const finalBookingData = { ...bookingData, handyman: selectedHandyman };
+          setBookingData(finalBookingData);
+          const bookingToSave = {
+              customerName: "Meet", // As per previous logic
+              service: finalBookingData.service,
+              handyman: finalBookingData.handyman,
+              date: finalBookingData.date,
+              time: finalBookingData.time,
+          };
+          const savedBooking = saveBooking(bookingToSave);
+          if (savedBooking) {
+            respond(`Booking confirmed! You've successfully booked a ${savedBooking.service} with ${savedBooking.handyman} for ${savedBooking.date} at ${savedBooking.time}. Your booking ID is ${savedBooking.id}.`, "initial");
+          } else {
+            respond("There was an error saving your booking. Please try again.", "initial");
+          }
         } else {
           respond("I'm sorry, I don't recognize that handyman. Please choose from John Smith or Sarah Wilson.", "ask_handyman");
         }
